@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.IBinder
 import android.provider.Settings
 import android.view.OrientationEventListener
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.SystemBarStyle
@@ -101,6 +102,13 @@ class MainActivity : AppCompatActivity() {
             statusBarStyle = SystemBarStyle.dark(Color.TRANSPARENT),
         )
         super.onCreate(savedInstanceState)
+        
+        // Prevent the screen from being recorded
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_SECURE,
+            WindowManager.LayoutParams.FLAG_SECURE
+        )
+        
         setContentView(R.layout.activity_main)
 
         // Check WebView support
